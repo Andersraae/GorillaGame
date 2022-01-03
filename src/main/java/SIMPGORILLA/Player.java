@@ -38,7 +38,7 @@ public class Player {
     }
 
     public String toString(){
-        return "x:"+ this.x + " y:" + this.y;
+        return "x:"+ round(this.x) + " y:" + round(this.y);
     }
 
     public void addToX(double n){
@@ -47,6 +47,10 @@ public class Player {
 
     public void addToY(double n){
         this.y += n;
+    }
+
+    public String round(double a){
+        return String.format("%.2f",a);
     }
 
 }

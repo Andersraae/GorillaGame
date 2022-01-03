@@ -8,7 +8,7 @@ public class Data {
     private static final double g = 9.81;
     private static final int VELOCITY = 25;
     private static final int ANGLE_IN_DEGREES = 45;
-    private static final int STEPS = 30;
+    private static final int STEPS = 100;
 
     private static Player player1 = new Player(0, 0, true);
     private static Player player2 = new Player(CANVAS_X - 1, 0, false);
@@ -16,6 +16,8 @@ public class Data {
 
     public static void main(String[] args) {
         simulateProjectileWithTime(player1, player2);
+
+        //System.out.println();
         //simulateProjectile(player1, player2);
     }
 
@@ -44,11 +46,9 @@ public class Data {
             System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
 
             if (playerIsHit(targetPlayer)){
-                System.out.println("Player is hit!");
-                break;
+                //System.out.println("Player is hit!");
+                //break;
             }
-
-
         }
     }
 
@@ -63,11 +63,11 @@ public class Data {
 
         while (projIsInside(proj.getX(),proj.getY())) {
             proj.setY(-g / (2 * Math.pow(VELOCITY, 2) * Math.pow(Math.cos(angle), 2)) * Math.pow(proj.getX(), 2) + Math.tan(angle) * proj.getX());
-            System.out.println(proj.toString());
+            System.out.println(proj.toString() +  " length:" + round(targetPlayer.distanceToProjectile(proj.getX(),proj.getY())));
 
             if (playerIsHit(targetPlayer)){
-                System.out.println(" player is hit!");
-                break;
+                //System.out.println(" player is hit!");
+                //break;
             }
             proj.addToX(0.1);
         }
