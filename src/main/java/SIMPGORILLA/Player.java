@@ -25,7 +25,7 @@ public class Player {
         return this.hasTurn;
     }
 
-    public double lenthBetweenPlayerAndProjectile(double px, double py){
+    public double distanceToProjectile(double px, double py){
         return Math.abs(Math.sqrt(Math.pow(px-this.x,2))+Math.pow(py-this.y,2));
     }
 

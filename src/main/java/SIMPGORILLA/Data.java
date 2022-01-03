@@ -7,10 +7,12 @@ public class Data {
     private static final int CANVAS_Y = 50;
     private static final double g = -9.81;
 
+    private static Player player1 = new Player(0, 0, true);
+    private static Player player2 = new Player(CANVAS_X - 1, 0, false);
+
     public static void main(String[] args) {
 
-        Player player1 = new Player(0, 0, true);
-        Player player2 = new Player(CANVAS_X - 1, 0, false);
+
 
 
 
@@ -41,14 +43,7 @@ public class Data {
     }
 
     public static boolean playerIsHit(Player player, double x, double y){
-
-        x = x;
-        y = y;
-
-        int px =player.getX();
-        int py =player.getY();
-
-        double len =Math.abs(Math.sqrt(Math.pow(px-x,2))+Math.pow(py-y,2));
+        double len = player2.distanceToProjectile(x,y);
         System.out.print(" len:" + len);
 
         if(len < 50){
