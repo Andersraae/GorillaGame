@@ -9,8 +9,5 @@
         <module name="GorillaGame" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GorillaGame" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
