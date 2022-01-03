@@ -3,6 +3,8 @@ module com.example.gorillagame {
     requires javafx.fxml;
 
 
-    opens com.example.gorillagame to javafx.fxml;
-    exports com.example.gorillagame;
+    opens example.gorillagame to javafx.fxml;
+    exports example.gorillagame;
+    exports SIMPGORILLA;
+    opens SIMPGORILLA to javafx.fxml;
 }
