@@ -10,7 +10,9 @@ import java.io.IOException;
 public class GameApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        System.out.println("før load");
         FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("game-view.fxml"));
+        System.out.println("Efter load");
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -18,6 +20,7 @@ public class GameApplication extends Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("øh");
         launch();
     }
 }
