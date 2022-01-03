@@ -3,33 +3,55 @@ package SIMPGORILLA;
 
 public class Player {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private boolean hasTurn;
 
-    public Player(int x, int y, boolean hasTurn) {
+    public Player(double x, double y, boolean hasTurn) {
         this.x = x;
         this.y = y;
         this.hasTurn = hasTurn;
     }
 
-    public int getX() {
+    public double getX() {
         return this.x;
     }
 
-    public int getY() {
+    public double getY() {
         return this.y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 
     public boolean hasTurnNow() {
         return this.hasTurn;
     }
 
-    public double lenthBetweenPlayerAndProjectile(double px, double py){
+    public double distanceToProjectile(double px, double py){
         return Math.abs(Math.sqrt(Math.pow(px-this.x,2))+Math.pow(py-this.y,2));
     }
 
+    public String toString(){
+        return "x:"+ round(this.x) + " y:" + round(this.y);
+    }
 
+    public void addToX(double n){
+        this.x += n;
+    }
+
+    public void addToY(double n){
+        this.y += n;
+    }
+
+    public String round(double a){
+        return String.format("%.2f",a);
+    }
 
 }
 
