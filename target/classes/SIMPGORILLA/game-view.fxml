@@ -9,15 +9,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SIMPGORILLA.GameController">
    <children>
-      <Button fx:id="throwbtn" layoutX="415.0" layoutY="30.0" mnemonicParsing="false" text="Kast" />
-      <TextField fx:id="vinput" layoutX="226.0" layoutY="42.0" />
-      <TextField fx:id="alfainput" alignment="TOP_LEFT" layoutX="226.0" layoutY="13.0" />
-      <Circle fx:id="projectilecirc" fill="DODGERBLUE" layoutX="79.0" layoutY="299.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle fx:id="player1rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-      <Rectangle fx:id="player2rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="545.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-      <Label fx:id="vinkeltext" layoutX="159.0" layoutY="17.0" text="Vinkel" />
-      <Label fx:id="hastighedtext" layoutX="159.0" layoutY="46.0" text="Hastighed" />
-      <Label fx:id="player1text" text="Spiller 1" />
-      <Label fx:id="player2text" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
+      <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" text="Kast" onAction="#kast" />
+      <TextField fx:id="angle" layoutX="226.0" layoutY="13.0" />
+      <TextField fx:id="velocity" layoutX="226.0" layoutY="42.0" />
+      <Circle fx:id="projectile" fill="DODGERBLUE" layoutX="79.0" layoutY="299.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="545.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
+      <Label layoutX="159.0" layoutY="17.0" text="Vinkel" />
+      <Label layoutX="159.0" layoutY="46.0" text="Hastighed" />
+      <Label text="Spiller 1" />
+      <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
    </children>
 </AnchorPane>
