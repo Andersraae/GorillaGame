@@ -14,26 +14,54 @@ public class Data {
 
 
 
-        simulateProjectile(player1, 45, 10);
+        simulateProjectile(player1, player2,45, 25);
 
     }
 
-    public static void simulateProjectile(Player player, int a, double velocity) {
+    public static void simulateProjectile(Player playerThatShoots, Player playThatIsHit, int a, double velocity) {
         double angle = Math.toRadians(a);
-        double y = player.getY();
-        double x = player.getX();
+        double y = playerThatShoots.getY();
+        double x = playerThatShoots.getX();
 
-        while (isInside(x,y)) {
+        while (pointIsInside(x,y)) {
             y = g / (2 * Math.pow(velocity, 2) * Math.pow(Math.cos(angle), 2)) * Math.pow(x, 2) + Math.tan(angle) * x;
-            x += 0.1;
             System.out.println("x:"+x+" y:"+y);
+
+            if (playerIsHit(playThatIsHit, x, y)){
+                System.out.println(" player is hit!");
+                break;
+            }
+            x += 0.1;
         }
 
     }
 
-    public static boolean isInside(double x, double y) {
+    public static boolean pointIsInside(double x, double y) {
         return (x < CANVAS_X && x >= 0 && y >= 0);
     }
+
+    public static boolean playerIsHit(Player player, double x, double y){
+
+        x = x;
+        y = y;
+
+        int px =player.getX();
+        int py =player.getY();
+
+        double len =Math.abs(Math.sqrt(Math.pow(px-x,2))+Math.pow(py-y,2));
+        System.out.print(" len:" + len);
+
+        if(len < 50){
+            return true;
+        }
+        return false;
+
+
+
+
+
+    }
+
 
 }
 
