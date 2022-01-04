@@ -19,7 +19,7 @@
       <Label layoutX="159.0" layoutY="46.0" text="Hastighed" />
       <Label text="Spiller 1" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
-      <Label fx:id="player1point" contentDisplay="RIGHT" layoutY="22.0" />
-      <Label fx:id="player2point" layoutX="572.0" layoutY="22.0" />
+      <Label fx:id="player1point" text="0" contentDisplay="RIGHT" layoutY="22.0" />
+      <Label fx:id="player2point" text="0" layoutX="572.0" layoutY="22.0" />
    </children>
 </AnchorPane>
