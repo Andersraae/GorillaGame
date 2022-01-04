@@ -6,9 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.shape.Circle;
 
 public class GameController  {
-    private static final int CANVAS_X = 100;
-    private static Player player1 = new Player(0, 400, true);
-    private static Player player2 = new Player(CANVAS_X - 1, 400, false);
+    private static final int CANVAS_X = 600;
+    private static Player player1 = new Player(0, 0, true);
+    private static Player player2 = new Player(CANVAS_X - 1, 0, false);
     private static Player proj = new Player(0,0,false);
     private static final double g = 9.81;
     private static final int STEPS = 100;
@@ -27,6 +27,7 @@ public class GameController  {
             double numvelocity = Double.parseDouble(velocity.getText());
             simulateProjectileWithTime(player1, player2, numangle, numvelocity);
         }
+
     }
 
     public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
@@ -36,6 +37,8 @@ public class GameController  {
         double totalTime = - 2.0 * yVelocity / -g;
         double timeIncrement = totalTime / STEPS;
         double xIncrement = xVelocity * timeIncrement;
+
+
 
         double x = shootingPlayer.getX();
         double y = shootingPlayer.getY();
@@ -50,13 +53,17 @@ public class GameController  {
             proj.setX(x);
             proj.setY(y);
             projectile.setCenterX(x);
-            projectile.setCenterY(x);
+            projectile.setCenterY(y);
 
             double l = player2.distanceToProjectile(proj.getX(), proj.getY());
 
             System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
-            }
         }
+
+        if (playerIsHit(player2)){
+            System.out.println("Player is hit!");
+        }
+    }
 
     public static String round(double a){
         return String.format("%.2f",a);
@@ -64,7 +71,6 @@ public class GameController  {
 
     public static boolean playerIsHit(Player player){
         double len = player.distanceToProjectile(proj.getX(), proj.getY());
-        //System.out.print("len:" + round(len) + " ");
-        return len < 50;
+        return len <= CANVAS_X/50;
     }
 }
