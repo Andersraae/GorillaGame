@@ -18,22 +18,23 @@ public class GameController  {
     private TextField velocity;
 
     public void kast(){
+        projectile.setCenterX(100);
+
+        System.out.println(projectile.getCenterX());
+        AnimationTimer animation = new AnimationTimer() {
+            @Override
+            public void handle(long l) { //l er den nuværende tid
+
+            }
+        };
+
         if(angle.getText() != null && velocity.getText() != null){
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
             Data.simulateProjectileWithTime(player1, player2, numangle, numvelocity);
 
-            System.out.println(projectile.getCenterX());
-            AnimationTimer animation = new AnimationTimer() {
-                @Override
-                public void handle(long l) {
-                    projectile.setCenterX(50);
-                    projectile.setCenterY(50);
-                }
-            };
             animation.start();
-            System.out.println(projectile.getCenterX());
-            animation.stop();
+
         }
     }
 }
