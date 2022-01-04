@@ -34,7 +34,7 @@ public class GameController  {
                 simulateProjectileWithTime(player1, player2, numangle, numvelocity);
             } else {
                 //player 2 har tur
-                simulateProjectileWithTime(player2, player1, numangle, numvelocity);
+                simulateProjectileWithTime(player2, player1, -numangle, -numvelocity);
             }
 
             //Fjerner værdier fra sidste spiller
