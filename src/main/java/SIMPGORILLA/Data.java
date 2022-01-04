@@ -10,9 +10,9 @@ public class Data {
     private static final double g = 9.81;
     private static final int STEPS = 100;
 
-    private static Player player1 = new Player(0, 0);
-    private static Player player2 = new Player(CANVAS_X - 1, 0);
-    private static Player proj = new Player(0,0);
+    private static Entity player1 = new Entity(0, 0);
+    private static Entity player2 = new Entity(CANVAS_X - 1, 0);
+    private static Entity proj = new Entity(0,0);
 
     public static void main(String[] args) {
         simulateProjectileWithTime(player1, player2, 45, 25);
@@ -21,7 +21,7 @@ public class Data {
         //simulateProjectile(player1, player2);
     }
 
-    public static void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
+    public static void simulateProjectileWithTime(Entity shootingPlayer, Entity targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
         double angle = Math.toRadians(ANGLE_IN_DEGREES);
         double xVelocity = VELOCITY * Math.cos(angle);
         double yVelocity = VELOCITY * Math.sin(angle);
@@ -82,7 +82,7 @@ public class Data {
         return (x < CANVAS_X && x >= 0 && y >= 0);
     }
 
-    public static boolean playerIsHit(Player player){
+    public static boolean playerIsHit(Entity player){
         double len = player.distanceToProjectile(proj.getX(), proj.getY());
         //System.out.print("len:" + round(len) + " ");
         return len < 50;

@@ -1,7 +1,7 @@
 package SIMPGORILLA;
 
 
-public class Player {
+public class Entity {
 
     private double x;
     private double y;
@@ -9,14 +9,14 @@ public class Player {
     private String name;
     public static int count = 1;
 
-    public Player(double x, double y) {
+    public Entity(double x, double y) {
         this.x = x;
         this.y = y;
         this.point = 0;
         this.name = "Player" + count++;
     }
 
-    public Player(double x, double y, String name) {
+    public Entity(double x, double y, String name) {
         this.x = x;
         this.y = y;
         this.point = 0;
