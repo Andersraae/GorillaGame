@@ -11,13 +11,15 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="545.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-      <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" text="Kast" onAction="#kast" />
+      <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" onAction="#kast" text="Kast" />
       <TextField fx:id="angle" layoutX="226.0" layoutY="13.0" />
       <TextField fx:id="velocity" layoutX="226.0" layoutY="42.0" />
-      <Circle fx:id="projectile" fill="YELLOW" layoutY="400" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="projectile" fill="YELLOW" layoutY="356" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="159.0" layoutY="17.0" text="Vinkel" />
       <Label layoutX="159.0" layoutY="46.0" text="Hastighed" />
       <Label text="Spiller 1" />
       <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
+      <Label fx:id="player1point" contentDisplay="RIGHT" layoutY="22.0" />
+      <Label fx:id="player2point" layoutX="572.0" layoutY="22.0" />
    </children>
 </AnchorPane>

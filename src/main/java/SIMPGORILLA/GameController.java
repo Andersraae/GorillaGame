@@ -2,6 +2,7 @@ package SIMPGORILLA;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Circle;
 
@@ -14,6 +15,8 @@ public class GameController  {
     private static final int STEPS = 20;
     private boolean hasTurnP1 = true;
 
+    public Label player1point;
+    public Label player2point;
     @FXML
     private Circle projectile;
     @FXML
@@ -23,18 +26,22 @@ public class GameController  {
 
     public void kast(){
         //player 1 har tur
-        if(angle.getText() != null && velocity.getText() != null && hasTurnP1){
+        if (angle.getText() != null && velocity.getText() != null){
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
-            simulateProjectileWithTime(player1, player2, numangle, numvelocity);
-        } else {
-            //player 2 har tur
-            if(angle.getText() != null && velocity.getText() != null){
-                double numangle = -Double.parseDouble(angle.getText());
-                double numvelocity = -Double.parseDouble(velocity.getText());
+
+            if(hasTurnP1){
+                simulateProjectileWithTime(player1, player2, numangle, numvelocity);
+            } else {
+                //player 2 har tur
                 simulateProjectileWithTime(player2, player1, numangle, numvelocity);
             }
-        }
+
+            //Fjerner værdier fra sidste spiller
+            angle.clear();
+            velocity.clear();
+
+        } //Der sker intet hvis der ikke er noget tekst i felterne
     }
 
     public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
@@ -69,6 +76,8 @@ public class GameController  {
         if (playerIsHit(targetPlayer)){
             shootingPlayer.addPoint(1);
             System.out.println(targetPlayer.getName() + " is hit!");
+            player1point.setText(Integer.toString(player1.getPoint()));
+            player2point.setText(Integer.toString(player2.getPoint()));
         }
 
         //status på point
