@@ -5,10 +5,39 @@ public class Player {
 
     private double x;
     private double y;
+    private int point;
+    private String name;
+    public static int count = 1;
 
     public Player(double x, double y) {
         this.x = x;
         this.y = y;
+        this.point = 0;
+        this.name = "Player" + count++;
+    }
+
+    public Player(double x, double y, String name) {
+        this.x = x;
+        this.y = y;
+        this.point = 0;
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+
+    public void addPoint(int n){
+        this.point += n;
+    }
+
+    public int getPoint(){
+        return this.point;
     }
 
     public double getX() {

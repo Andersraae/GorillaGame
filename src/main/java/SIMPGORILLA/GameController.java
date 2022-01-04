@@ -7,8 +7,8 @@ import javafx.scene.shape.Circle;
 
 public class GameController  {
     private static final int CANVAS_X = 600;
-    private static Player player1 = new Player(0, 0);
-    private static Player player2 = new Player(CANVAS_X - 1, 0);
+    private static Player player1 = new Player(0, 0, "p1");
+    private static Player player2 = new Player(CANVAS_X - 1, 0, "p2");
     private static Player proj = new Player(0,0);
     private static final double g = 9.81;
     private static final int STEPS = 20;
@@ -21,25 +21,20 @@ public class GameController  {
     @FXML
     private TextField velocity;
 
-
     public void kast(){
-
         //player 1 har tur
         if(angle.getText() != null && velocity.getText() != null && hasTurnP1){
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
             simulateProjectileWithTime(player1, player2, numangle, numvelocity);
         } else {
+            //player 2 har tur
             if(angle.getText() != null && velocity.getText() != null){
                 double numangle = -Double.parseDouble(angle.getText());
                 double numvelocity = -Double.parseDouble(velocity.getText());
                 simulateProjectileWithTime(player2, player1, numangle, numvelocity);
             }
         }
-
-
-
-
     }
 
     public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
@@ -49,12 +44,10 @@ public class GameController  {
         double totalTime = - 2.0 * yVelocity / -g;
         double timeIncrement = totalTime / STEPS;
         double xIncrement = xVelocity * timeIncrement;
-
-
-
         double x = shootingPlayer.getX();
         double y = shootingPlayer.getY();
         double t = 0.0;
+
         System.out.println("step\tx \t y \t time \t length");
         System.out.println("0\t0.0\t\t0.0\t\t0.0");
 
@@ -67,38 +60,34 @@ public class GameController  {
             projectile.setCenterX(x);
             projectile.setCenterY(y);
 
-
-            double l = player2.distanceToProjectile(proj.getX(), proj.getY());
-
+            double l = targetPlayer.distanceToProjectile(proj.getX(), proj.getY());
             System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
-
-
-
         }
 
-        if (playerIsHit(player2)){
-            System.out.println("Player is hit!");
+        System.out.println();
+
+        if (playerIsHit(targetPlayer)){
+            shootingPlayer.addPoint(1);
+            System.out.println(targetPlayer.getName() + " is hit!");
         }
+
+        //status på point
+        System.out.println(player1.getName() + ":" + player1.getPoint());
+        System.out.println(player2.getName() + ":" + player2.getPoint());
 
         //skifte tur
         if (hasTurnP1){
             hasTurnP1 = false;
-            System.out.println("Spiller 2 har tur");
         } else {
             hasTurnP1 = true;
-            System.out.println("Spiller 1 har tur");
         }
 
-
-
-
-
+        System.out.println(targetPlayer.getName() + " har tur!");
     }
 
     public static String round(double a){
         return String.format("%.2f",a);
     }
-
     public static boolean playerIsHit(Player player){
         double len = player.distanceToProjectile(proj.getX(), proj.getY());
         return len <= CANVAS_X/50;
