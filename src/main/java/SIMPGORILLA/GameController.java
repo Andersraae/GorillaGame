@@ -7,9 +7,9 @@ import javafx.scene.shape.Circle;
 
 public class GameController  {
     private static final int CANVAS_X = 600;
-    private static Entity player1 = new Entity(0, 0, "p1");
-    private static Entity player2 = new Entity(CANVAS_X - 1, 0, "p2");
-    private static Entity proj = new Entity(0,0);
+    private static Player player1 = new Player(0, 0, "p1");
+    private static Player player2 = new Player(CANVAS_X - 1, 0, "p2");
+    private static Projectile proj = new Projectile(0,0);
     private static final double g = 9.81;
     private static final int STEPS = 20;
     private boolean hasTurnP1 = true;
@@ -43,7 +43,7 @@ public class GameController  {
         } //Der sker intet hvis der ikke er noget tekst i felterne
     }
 
-    public void simulateProjectileWithTime(Entity shootingPlayer, Entity targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
+    public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
         double angle = Math.toRadians(ANGLE_IN_DEGREES);
         double xVelocity = VELOCITY * Math.cos(angle);
         double yVelocity = VELOCITY * Math.sin(angle);
@@ -66,7 +66,7 @@ public class GameController  {
             projectile.setCenterX(x);
             projectile.setCenterY(y);
 
-            double l = targetPlayer.distanceToProjectile(proj.getX(), proj.getY());
+            double l = targetPlayer.distanceToProjectile(proj);
             System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
         }
 
@@ -96,8 +96,8 @@ public class GameController  {
     public static String round(double a){
         return String.format("%.2f",a);
     }
-    public static boolean playerIsHit(Entity player){
-        double len = player.distanceToProjectile(proj.getX(), proj.getY());
+    public static boolean playerIsHit(Player player){
+        double len = player.distanceToProjectile(proj);
         return len <= CANVAS_X/50;
     }
 }
