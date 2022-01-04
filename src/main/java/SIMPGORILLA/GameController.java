@@ -56,6 +56,8 @@ public class GameController  {
         double y = shootingPlayer.getY();
         double t = 0.0;
 
+
+
         System.out.println("step\tx \t y \t time \t length");
         System.out.println("0\t0.0\t\t0.0\t\t0.0");
 
