@@ -5,12 +5,10 @@ public class Player {
 
     private double x;
     private double y;
-    private boolean hasTurn;
 
-    public Player(double x, double y, boolean hasTurn) {
+    public Player(double x, double y) {
         this.x = x;
         this.y = y;
-        this.hasTurn = hasTurn;
     }
 
     public double getX() {
@@ -27,10 +25,6 @@ public class Player {
 
     public void setY(double y) {
         this.y = y;
-    }
-
-    public boolean hasTurnNow() {
-        return this.hasTurn;
     }
 
     public double distanceToProjectile(double px, double py){

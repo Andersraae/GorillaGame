@@ -7,11 +7,12 @@ import javafx.scene.shape.Circle;
 
 public class GameController  {
     private static final int CANVAS_X = 600;
-    private static Player player1 = new Player(0, 0, true);
-    private static Player player2 = new Player(CANVAS_X - 1, 0, false);
-    private static Player proj = new Player(0,0,false);
+    private static Player player1 = new Player(0, 0);
+    private static Player player2 = new Player(CANVAS_X - 1, 0);
+    private static Player proj = new Player(0,0);
     private static final double g = 9.81;
-    private static final int STEPS = 100;
+    private static final int STEPS = 20;
+    private boolean hasTurnP1 = true;
 
     @FXML
     private Circle projectile;
@@ -22,11 +23,22 @@ public class GameController  {
 
 
     public void kast(){
-        if(angle.getText() != null && velocity.getText() != null){
+
+        //player 1 har tur
+        if(angle.getText() != null && velocity.getText() != null && hasTurnP1){
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
             simulateProjectileWithTime(player1, player2, numangle, numvelocity);
+        } else {
+            if(angle.getText() != null && velocity.getText() != null){
+                double numangle = -Double.parseDouble(angle.getText());
+                double numvelocity = -Double.parseDouble(velocity.getText());
+                simulateProjectileWithTime(player2, player1, numangle, numvelocity);
+            }
         }
+
+
+
 
     }
 
@@ -55,14 +67,32 @@ public class GameController  {
             projectile.setCenterX(x);
             projectile.setCenterY(y);
 
+
             double l = player2.distanceToProjectile(proj.getX(), proj.getY());
 
             System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
+
+
+
         }
 
         if (playerIsHit(player2)){
             System.out.println("Player is hit!");
         }
+
+        //skifte tur
+        if (hasTurnP1){
+            hasTurnP1 = false;
+            System.out.println("Spiller 2 har tur");
+        } else {
+            hasTurnP1 = true;
+            System.out.println("Spiller 1 har tur");
+        }
+
+
+
+
+
     }
 
     public static String round(double a){

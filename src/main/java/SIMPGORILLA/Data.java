@@ -10,9 +10,9 @@ public class Data {
     private static final double g = 9.81;
     private static final int STEPS = 100;
 
-    private static Player player1 = new Player(0, 0, true);
-    private static Player player2 = new Player(CANVAS_X - 1, 0, false);
-    private static Player proj = new Player(0,0,false);
+    private static Player player1 = new Player(0, 0);
+    private static Player player2 = new Player(CANVAS_X - 1, 0);
+    private static Player proj = new Player(0,0);
 
     public static void main(String[] args) {
         simulateProjectileWithTime(player1, player2, 45, 25);
