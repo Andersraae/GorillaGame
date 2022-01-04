@@ -15,7 +15,7 @@ public class Data {
     private static Player proj = new Player(0,0,false);
 
     public static void main(String[] args) {
-//        simulateProjectileWithTime(player1, player2);
+        simulateProjectileWithTime(player1, player2, 45, 25);
 
         //System.out.println();
         //simulateProjectile(player1, player2);
