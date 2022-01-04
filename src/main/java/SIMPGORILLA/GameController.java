@@ -24,6 +24,7 @@ public class GameController  {
     @FXML
     private TextField velocity;
 
+    //Anders
     public void kast(){
         //player 1 har tur
         if (angle.getText() != null && velocity.getText() != null){
@@ -44,6 +45,7 @@ public class GameController  {
         } //Der sker intet hvis der ikke er noget tekst i felterne
     }
 
+    //Andreas
     public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
         double angle = Math.toRadians(ANGLE_IN_DEGREES);
         double xVelocity = VELOCITY * Math.cos(angle);
@@ -94,9 +96,12 @@ public class GameController  {
         System.out.println(targetPlayer.getName() + " har tur!");
     }
 
+    //Andreas
     public static String round(double a){
         return String.format("%.2f",a);
     }
+
+    //Andreas
     public static boolean playerIsHit(Player player){
         double len = player.distanceToProjectile(proj.getX(), proj.getY());
         return len <= CANVAS_X/50;

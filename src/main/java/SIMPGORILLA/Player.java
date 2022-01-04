@@ -1,6 +1,5 @@
 package SIMPGORILLA;
 
-
 public class Player {
 
     private double x;
