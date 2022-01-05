@@ -11,7 +11,7 @@ public class GameController  {
     private static Player player2 = new Player(CANVAS_X - 1, 0, "p2");
     private static Projectile proj = new Projectile(0,0);
     private static final double g = 9.81;
-    private static final int STEPS = 20;
+    private static final int totalSteps = 20;
     private boolean hasTurnP1 = true;
 
     public Label player1point;
@@ -51,7 +51,7 @@ public class GameController  {
         double xVelocity = VELOCITY * Math.cos(angle);
         double yVelocity = VELOCITY * Math.sin(angle);
         double totalTime = - 2.0 * yVelocity / -g;
-        double timeIncrement = totalTime / STEPS;
+        double timeIncrement = totalTime / totalSteps;
         double xIncrement = xVelocity * timeIncrement;
         double x = shootingPlayer.getX();
         double y = shootingPlayer.getY();
@@ -61,7 +61,7 @@ public class GameController  {
         System.out.println("step\tx \t y \t time \t length");
         System.out.println("0\t0.0\t\t0.0\t\t0.0");
 
-        for (stepCounter= 1; stepCounter <= STEPS; stepCounter++) {
+        for (stepCounter= 1; stepCounter <= totalSteps; stepCounter++) {
             t += timeIncrement;
             x += xIncrement;
             y = yVelocity * t + 0.5 * -g * t * t;
