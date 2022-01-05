@@ -31,10 +31,10 @@ public class GameController  {
             double numvelocity = Double.parseDouble(velocity.getText());
 
             if(hasTurnP1){
-                simulateProjectileWithTime(player1, player2, numangle, numvelocity);
+                simulateProjectile(player1, player2, numangle, numvelocity);
             } else {
                 //player 2 har tur
-                simulateProjectileWithTime(player2, player1, -numangle, -numvelocity);
+                simulateProjectile(player2, player1, -numangle, -numvelocity);
             }
 
             //Fjerner værdier fra sidste spiller
@@ -45,7 +45,7 @@ public class GameController  {
     }
 
     //Andreas
-    public void simulateProjectileWithTime(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
+    public void simulateProjectile(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
         double angle = Math.toRadians(ANGLE_IN_DEGREES);
         double xVelocity = VELOCITY * Math.cos(angle);
         double yVelocity = VELOCITY * Math.sin(angle);
@@ -55,13 +55,12 @@ public class GameController  {
         double x = shootingPlayer.getX();
         double y = shootingPlayer.getY();
         double t = 0.0;
-
-
+        int stepCounter;
 
         System.out.println("step\tx \t y \t time \t length");
         System.out.println("0\t0.0\t\t0.0\t\t0.0");
 
-        for (int i = 1; i <= STEPS; i++) {
+        for (stepCounter= 1; stepCounter <= STEPS; stepCounter++) {
             t += timeIncrement;
             x += xIncrement;
             y = yVelocity * t + 0.5 * -g * t * t;
@@ -71,7 +70,7 @@ public class GameController  {
             projectile.setCenterY(y);
 
             double l = targetPlayer.distanceToProjectile(proj);
-            System.out.println(i + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
+            System.out.println(stepCounter + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
         }
 
         System.out.println();
