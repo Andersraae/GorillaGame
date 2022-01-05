@@ -25,15 +25,14 @@ public class GameController  {
 
     //Anders
     public void kast(){
-        //player 1 har tur
-        if (angle.getText() != null && velocity.getText() != null){
+        try {
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
 
+            //player 1 har tur
             if(hasTurnP1){
                 simulateProjectile(player1, player2, numangle, numvelocity);
-            } else {
-                //player 2 har tur
+            } else { //player 2 har tur
                 simulateProjectile(player2, player1, -numangle, -numvelocity);
             }
 
@@ -41,7 +40,9 @@ public class GameController  {
             angle.clear();
             velocity.clear();
 
-        } //Der sker intet hvis der ikke er noget tekst i felterne
+        } catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     //Andreas
