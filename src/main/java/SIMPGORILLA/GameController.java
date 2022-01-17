@@ -51,8 +51,8 @@ public class GameController implements Initializable {
         ButtonKast.setLayoutX(sizeX/2);
         LabelVinkel.setLayoutX(angle.getLayoutX()-40);
         LabelHastighed.setLayoutX(velocity.getLayoutX()-60);
-        player2point.setLayoutX(sizeY-20);
         LabelNamePlayer2.setLayoutX(sizeX-50);
+        player2point.setLayoutX(sizeX-20);
     }
 
     //Anders

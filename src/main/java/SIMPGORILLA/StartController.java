@@ -24,6 +24,16 @@ public class StartController {
         try{
             sizeX = Integer.parseInt(TextSizeX.getText());
             sizeY = Integer.parseInt(TextSizeY.getText());
-        } catch (Exception e){}
+        } catch (Exception e){
+            if (TextSizeX.getText().length() == 0){
+                sizeX = 600;
+            }
+
+            if(TextSizeY.getText().length() == 0){
+                sizeY = 400;
+            }
+
+
+        }
     }
 }
