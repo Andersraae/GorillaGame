@@ -5,13 +5,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SIMPGORILLA.StartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="252.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SIMPGORILLA.StartController">
    <children>
-      <Button layoutX="66.0" layoutY="139.0" mnemonicParsing="false" onAction="#startGame" prefHeight="35.0" prefWidth="76.0" text="Start" />
-      <TextField fx:id="TextSizeY" layoutX="100.0" layoutY="41.0" prefHeight="26.0" prefWidth="76.0" />
-      <Label layoutX="32.0" layoutY="45.0" text="Højde i px:" />
-      <TextField fx:id="TextSizeX" layoutX="100.0" layoutY="79.0" prefHeight="26.0" prefWidth="76.0" />
-      <Label layoutX="32.0" layoutY="83.0" text="Bredde i px:" />
-      <Label layoutX="66.0" layoutY="14.0" text="min 200x200" />
+      <Button layoutX="88.0" layoutY="121.0" mnemonicParsing="false" onAction="#startGame" prefHeight="35.0" prefWidth="76.0" text="Start" />
+      <TextField fx:id="TextSizeY" layoutX="100.0" layoutY="20.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="35.0" layoutY="25.0" text="Højde i px:" />
+      <TextField fx:id="TextSizeX" layoutX="100.0" layoutY="55.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="32.0" layoutY="59.0" text="Bredde i px:" />
+      <Label layoutX="90.0" layoutY="88.0" text="min 200x200" />
+      <Label layoutX="156.0" layoutY="25.0" text="tom -&gt; 400 px" />
+      <Label layoutX="156.0" layoutY="59.0" text="tom -&gt; 600 px" />
    </children>
 </AnchorPane>

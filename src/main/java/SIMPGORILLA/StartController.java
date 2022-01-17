@@ -32,8 +32,6 @@ public class StartController {
             if(TextSizeY.getText().length() == 0){
                 sizeY = 400;
             }
-
-
         }
     }
 }
