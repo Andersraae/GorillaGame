@@ -1,27 +1,59 @@
 package SIMPGORILLA;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class GameController  {
-    private static final int CANVAS_X = 600;
+public class GameController implements Initializable {
+    private static int sizeX = StartController.sizeX, sizeY = StartController.sizeY;
     private static Player player1 = new Player(0, 0, "p1");
-    private static Player player2 = new Player(CANVAS_X - 1, 0, "p2");
+    private static Player player2 = new Player(sizeX- 1, 0, "p2");
     private static Projectile proj = new Projectile(0,0);
     private static final double g = 9.81;
-    private static final int totalSteps = 20;
+    private static final int totalSteps = sizeX;
     private boolean hasTurnP1 = true;
+    private ArrayList<Circle> list = new ArrayList<>();
 
-    public Label player1point;
-    public Label player2point;
+    @FXML
+    private AnchorPane screen;
+    public Label player1point, player2point,LabelVinkel,LabelHastighed, LabelNamePlayer2;
     @FXML
     private Circle projectile;
     @FXML
-    private TextField angle;
+    private TextField angle, velocity;
     @FXML
-    private TextField velocity;
+    private Rectangle RectanglePlayer1,RectanglePlayer2;
+    @FXML
+    private Button ButtonKast;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        RectanglePlayer1.setWidth(sizeX/25);
+        RectanglePlayer2.setWidth(sizeX/25);
+        RectanglePlayer1.setHeight(sizeX/25);
+        RectanglePlayer2.setHeight(sizeX/25);
+        RectanglePlayer1.setX(0);
+        RectanglePlayer1.setY(sizeY - RectanglePlayer1.getHeight());
+        RectanglePlayer2.setX(sizeX - RectanglePlayer2.getWidth());
+        RectanglePlayer2.setY(sizeY - RectanglePlayer2.getHeight());
+        projectile.setCenterX(player1.getX() + projectile.getRadius());
+        projectile.setCenterY(player1.getY() - projectile.getRadius() + sizeY);
+        angle.setLayoutX(sizeX/2);
+        velocity.setLayoutX(sizeX/2);
+        ButtonKast.setLayoutX(sizeX/2);
+        LabelVinkel.setLayoutX(angle.getLayoutX()-40);
+        LabelHastighed.setLayoutX(velocity.getLayoutX()-60);
+        LabelNamePlayer2.setLayoutX(sizeX-50);
+        player2point.setLayoutX(sizeX-20);
+    }
 
     //Anders
     public void kast(){
@@ -45,6 +77,17 @@ public class GameController  {
         }
     }
 
+    public Circle drawPoint(double x, double y){
+        list.add(new Circle(x,-(y-sizeY),1));
+        return list.get(list.size() - 1);
+    }
+
+    public void removePoints(){
+        for (Circle c: list){
+            screen.getChildren().remove(c);
+        }
+    }
+
     //Andreas
     public void simulateProjectile(Player shootingPlayer, Player targetPlayer, double ANGLE_IN_DEGREES, double VELOCITY){
         double angle = Math.toRadians(ANGLE_IN_DEGREES);
@@ -54,9 +97,11 @@ public class GameController  {
         double timeIncrement = totalTime / totalSteps;
         double xIncrement = xVelocity * timeIncrement;
         double x = shootingPlayer.getX();
-        double y = shootingPlayer.getY();
+        double y;
         double t = 0.0;
         int stepCounter;
+
+        removePoints();
 
         System.out.println("step\tx \t y \t time \t length");
         System.out.println("0\t0.0\t\t0.0\t\t0.0");
@@ -69,7 +114,9 @@ public class GameController  {
             proj.setY(y);
             projectile.setCenterX(x);
             projectile.setCenterY(y);
-
+            projectile.setCenterX(player1.getX() + x);
+            projectile.setCenterY(player1.getY() - projectile.getRadius() + sizeY + y);
+            screen.getChildren().add(drawPoint(x,y));
             double l = targetPlayer.distanceToProjectile(proj);
             System.out.println(stepCounter + "\t" + round(x) + "\t" + round(y) + "\t" + round(t) + "\t" + round(l));
         }
@@ -105,6 +152,6 @@ public class GameController  {
     //Andreas
     public static boolean playerIsHit(Player player){
         double len = player.distanceToProjectile(proj);
-        return len <= CANVAS_X/50;
+        return len <= sizeX/50;
     }
 }

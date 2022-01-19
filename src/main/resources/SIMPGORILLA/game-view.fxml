@@ -8,19 +8,20 @@
 <?import javafx.scene.shape.Rectangle?>
 
 <!-- Anders og Christian -->
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SIMPGORILLA.GameController">
+
+<AnchorPane fx:id="screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SIMPGORILLA.GameController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="545.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-      <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" onAction="#kast" text="Kast" />
-      <TextField fx:id="angle" layoutX="226.0" layoutY="13.0" />
-      <TextField fx:id="velocity" layoutX="226.0" layoutY="42.0" />
-      <Circle fx:id="projectile" fill="YELLOW" layoutY="356" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="159.0" layoutY="17.0" text="Vinkel" />
-      <Label layoutX="159.0" layoutY="46.0" text="Hastighed" />
+      <Rectangle fx:id="RectanglePlayer1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" layoutY="0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+      <Rectangle fx:id="RectanglePlayer2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" layoutX="0" layoutY="0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+      <Button fx:id="ButtonKast" layoutX="415.0" layoutY="75" mnemonicParsing="false" onAction="#kast" text="Kast" />
+      <TextField fx:id="angle" layoutX="226.0" layoutY="13.0" prefHeight="25.0" prefWidth="43.0" />
+      <TextField fx:id="velocity" layoutX="226.0" layoutY="42.0" prefHeight="25.0" prefWidth="43.0" />
+      <Circle fx:id="projectile" fill="YELLOW" layoutY="0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="LabelVinkel" layoutX="159.0" layoutY="17.0" text="Vinkel" />
+      <Label fx:id="LabelHastighed" layoutX="159.0" layoutY="46.0" text="Hastighed" />
       <Label text="Spiller 1" />
-      <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
-      <Label fx:id="player1point" text="0" contentDisplay="RIGHT" layoutY="22.0" />
-      <Label fx:id="player2point" text="0" layoutX="572.0" layoutY="22.0" />
+      <Label fx:id="LabelNamePlayer2" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="557.0" text="Spiller 2" />
+      <Label fx:id="player1point" contentDisplay="RIGHT" layoutY="22.0" text="0" />
+      <Label fx:id="player2point" layoutX="0" layoutY="22.0" text="0" />
    </children>
 </AnchorPane>
