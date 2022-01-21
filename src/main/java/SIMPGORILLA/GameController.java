@@ -62,12 +62,17 @@ public class GameController implements Initializable {
             double numangle = Double.parseDouble(angle.getText());
             double numvelocity = Double.parseDouble(velocity.getText());
 
-            //player 1 har tur
-            if(hasTurnP1){
-                simulateProjectile(player1, player2, numangle, numvelocity);
-            } else { //player 2 har tur
-                simulateProjectile(player2, player1, -numangle, -numvelocity);
+            if (numangle < 0 || numangle > 90) {
+                System.out.println("Du skal vælge en vinkel mellem 0 og 90 grader");
+            } else {
+                //player 1 har tur
+                if(hasTurnP1){
+                    simulateProjectile(player1, player2, numangle, numvelocity);
+                } else { //player 2 har tur
+                    simulateProjectile(player2, player1, -numangle, -numvelocity);
+                }
             }
+
 
             //Fjerner værdier fra sidste spiller
             angle.clear();
